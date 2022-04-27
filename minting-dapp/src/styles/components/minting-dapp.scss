@@ -8,11 +8,9 @@
     @apply flex flex-col;
     @apply px-4 py-6;
     @apply rounded-lg;
-    background-color: #1d1c1c !important;
-    @apply bg-popupsbg;
-    @apply border border-neutral-50;
-    @apply shadow; 
-    border-color: #4f46e5 !important;
+    background-color: black !important;
+    @apply bg-black;
+    @apply border border-black;
 
 
     .use-block-explorer {
@@ -23,37 +21,34 @@
 
       &:not(:first-child)::before {
         content: '';
-        
+
         @apply block;
         @apply mx-auto my-3;
         @apply w-12;
-
-        @apply border-t border-neutral-300;
       }
     }
 
     .merkle-proof-manual-address {
       @apply flex flex-col;
       @apply mt-4;
-      background-color: #1d1c1c;
 
-      h2 {
+      @apply bg-black h2 {
         @apply font-semibold;
-        @apply text-primary-600 text-xl text-center;
+        @apply text-white text-xl text-center;
       }
 
       p {
         @apply mt-3;
-        color: white;
+        @apply text-white;
       }
 
       .feedback-message {
         @apply rounded-lg;
         @apply mt-4;
         @apply p-3;
-        
+
         @apply text-sm;
-        @apply bg-primary-100;
+        @apply bg-black;
       }
 
       input {
@@ -64,7 +59,7 @@
       button {
         @apply rounded-b-lg;
         @apply rounded-t-none;
-        
+
       }
     }
   }
@@ -74,13 +69,11 @@
     @apply rounded-lg;
 
     @apply text-sm;
-    @apply bg-popupsbg;
-    @apply border border-neutral-50;
-    @apply shadow;
+    @apply bg-black;
 
     .spinner {
       @apply inline;
-      @apply -ml-1 mr-3 h-8 w-8 text-primary-500;
+      @apply -ml-1 mr-3 h-8 w-8 text-white;
       @apply animate-spin;
     }
   }
@@ -88,42 +81,42 @@
   .collection-status {
     @apply grid sm:grid-cols-2 auto-rows-min;
     @apply rounded-lg;
-    background-color: #1d1c1c;
+    background-color: black;
     border-color: #4f46e5 !important;
     border-radius: 2px;
-    @apply font-mono;
+    @apply font-DM;
     @apply text-sm;
-    @apply bg-popupsbg;
-    @apply border border-neutral-50;
-    @apply shadow;
+    @apply bg-black;
 
-    & > * {
+    &>* {
       @apply flex flex-col items-center;
       @apply px-6 py-4;
-      background-color: #1d1c1c;
+      background-color: black;
       color: white;
+
       .label {
-        @apply text-xs text-primary-600;
+        @apply text-xs text-white;
       }
     }
 
     .user-address {
       @apply sm:col-span-2;
       @apply overflow-hidden;
-      background-color: #1d1c1c;
-      @apply border-b border-neutral-200;
+      background-color: black;
+      @apply border-b border-white;
       color: white;
-      border-color: #4f46e5 !important;
+
       .address {
         @apply w-full;
-        
+
         @apply font-semibold;
         @apply truncate;
         @apply text-center;
       }
     }
 
-    .supply, .current-sale {
+    .supply,
+    .current-sale {
       .label {
         @apply block;
 
@@ -131,32 +124,31 @@
       }
 
       &.supply {
-        @apply border-b sm:border-b-0 sm:border-r border-neutral-200;
+        @apply border-b sm:border-b-0 sm:border-r border-white;
         border-color: #4f46e5 !important;
       }
     }
   }
 
-  .cannot-mint, .not-mainnet, .collection-sold-out {
+  .cannot-mint,
+  .not-mainnet,
+  .collection-sold-out {
     @apply rounded-lg;
     @apply px-6 py-4;
 
     @apply text-center;
-    @apply bg-popupsbg;
-    @apply border border-neutral-50;
-    @apply shadow;
+    @apply bg-black;
 
     &.cannot-mint .emoji {
       @apply block;
 
-      @apply text-4xl;
+      @apply text-xl;
     }
 
     &.not-mainnet {
-      @apply bg-warning-400;
-      @apply border-warning-500;
+      @apply bg-coral;
 
-      @apply text-warningtxt;
+      @apply text-black;
 
       .small {
         @apply block;
@@ -180,55 +172,53 @@
     @apply overflow-hidden;
 
     @apply text-center;
-    @apply bg-popupsbg;
-    @apply shadow;
+    @apply bg-black;
 
     .preview {
       @apply p-8;
 
-      @apply bg-primary-200;
-      background-color: #1d1c1c;
-      
+      @apply bg-BLACK;
+
       img {
         max-height: 100% !important;
         @apply m-auto;
         @apply max-h-52;
-        
+
         filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.4));
       }
     }
 
     .price {
       @apply px-6 py-4;
-      background-color: #1d1c1c;
+      background-color: black;
       color: white;
     }
 
-    & > * {
+    &>* {
       @apply w-full;
 
       &:not(:last-child) {
-        @apply border-b border-neutral-200;
-        border-color: #4f46e5 !important;
+        @apply border-b border-black;
         color: white;
       }
     }
 
     .controls {
       @apply flex items-stretch;
-      background-color: #1d1c1c;
-      & > * {
+      background-color: black;
+
+      &>* {
         @apply rounded-none;
         @apply border-0;
-        background-color: #1d1c1c;
+        background-color: black;
         color: white;
       }
 
-      .decrease, .mint-amount {
-        @apply border-r border-neutral-200;
-        background-color: #1d1c1c;
+      .decrease,
+      .mint-amount {
+        @apply border-r border-black;
+        background-color: black;
         color: white;
-        border-color: #4f46e5 !important;
       }
 
       .mint-amount {
@@ -236,8 +226,7 @@
         @apply w-full;
         color: white !important;
         @apply font-semibold;
-        @apply text-primary-600;
-        border-color: #4f46e5 !important;
+        @apply text-white;
       }
 
       .primary {

@@ -2,14 +2,14 @@ body {
   @apply p-6;
   @apply min-h-screen;
 
-  @apply font-sans;
-  @apply text-neutral-800;
-  @apply bg-gradient-to-b from-neutral-100 via-neutral-100 to-neutral-200;
+  @apply font-DM;
+  @apply text-white;
+  @apply bg-black;
 }
 
 a, a:link, a:visited {
   @apply font-semibold;
-  @apply text-primary-600;
+  @apply text-white;
 
   &:hover {
     @apply underline;
@@ -31,7 +31,7 @@ main {
 }
 
 span.emoji {
-  @apply text-2xl;
+  @apply text-xl;
 }
 
 .error {
@@ -40,10 +40,9 @@ span.emoji {
   @apply p-3;
   
   @apply text-sm;
-  @apply bg-error-50;
-  @apply border border-error-200;
-  @apply shadow;
-  @apply text-error-500;
+  @apply bg-coral;
+  @apply border border-coral;
+  @apply text-black;
 
   &::before {
     content: 'Error';
@@ -58,14 +57,15 @@ span.emoji {
     @apply px-2 py-1;
     @apply rounded-md;
 
-    @apply text-xs;
+    @apply text-sm;
 
     @apply font-semibold;
-    @apply text-errortxt;
-    @apply bg-error-500;
+    @apply text-black;
+    @apply bg-coral;
 
     &:hover {
-      @apply bg-error-400;
+      @apply bg-coral;
+      @apply opacity-50;
     }
   }
 }
@@ -76,21 +76,20 @@ button {
   @apply rounded-full;
   
   @apply font-semibold;
-  @apply bg-popupsbg;
-  @apply border border-neutral-200;
-  @apply shadow-sm;
+  @apply bg-yellow-300;
+  @apply border border-black;
 
   &:hover {
-    @apply bg-neutral-100;
+    @apply opacity-50;
   }
 
   &.primary {
-    @apply text-primarytxt;
-    @apply bg-primary-500;
+    @apply text-black;
+    @apply bg-yellow-300;
     @apply border;
 
     &:hover {
-      @apply bg-primary-600;
+      @apply opacity-50;
     }
 
     &:disabled {
@@ -108,16 +107,13 @@ input[type=text] {
 
   @apply rounded-full;
   
-  @apply font-mono font-semibold;
-  @apply text-primary-600;
-  @apply bg-popupsbg;
-  @apply border border-neutral-200;
-  @apply shadow-sm;
+  @apply font-DM font-semibold;
+  @apply text-white;
+  @apply bg-black;
   @apply outline-none;
 
   &:focus {
-    @apply bg-neutral-50;
-    @apply border-primary-300;
+    @apply bg-black;
   }
 
   &:disabled {
@@ -133,5 +129,5 @@ label {
   @apply mt-4 mb-1 ml-1;
 
   @apply font-semibold;
-  @apply text-sm text-primary-600;
+  @apply text-sm text-white;
 }

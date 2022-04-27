@@ -200,7 +200,7 @@ export default class Dapp extends React.Component<Props, State> {
 
         {!this.isWalletConnected() || !this.isSoldOut() ?
           <div className="no-wallet">
-            {!this.isWalletConnected() ? <button className="primary" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Connect Wallet</button> : null}
+            {!this.isWalletConnected() ? <button className="bg-yellow-300" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Connect Wallet</button> : null}
             
             <div className="use-block-explorer">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis dapibus condimentum.
