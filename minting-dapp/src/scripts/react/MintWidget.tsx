@@ -75,9 +75,11 @@ export default class MintWidget extends React.Component<Props, State> {
             </div>
 
             <div className="controls">
-              <button className="decrease" onClick={() => this.decrementMintAmount()}>-</button>
-              <span className="mint-amount">{this.state.mintAmount}</span>
-              <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
+              <div className="h-12 flex flex-row">
+                <button className="decrease" onClick={() => this.decrementMintAmount()}>-</button>
+                <span className="mint-amount">{this.state.mintAmount}</span>
+                <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
+              </div>
             </div>
           </div>
           :
