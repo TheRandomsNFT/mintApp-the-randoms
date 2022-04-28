@@ -58,5 +58,8 @@
     "public-sale-open": "hardhat run scripts/6_public_sale_open.ts",
     "public-sale-close": "hardhat run scripts/7_public_sale_close.ts",
     "reveal": "hardhat run scripts/8_reveal.ts"
+  },
+  "dependencies": {
+    "truffle": "^5.5.11"
   }
 }

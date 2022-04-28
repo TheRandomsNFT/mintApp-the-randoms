@@ -179,7 +179,7 @@ export default class Dapp extends React.Component<Props, State> {
                   />
                   :
                   <div className="collection-sold-out">
-                    <h2>Tokens have been <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
+                    <h2>The Randoms have been <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
 
                     You can buy from our beloved holders on <a href={this.generateMarketplaceUrl()} target="_blank">{CollectionConfig.marketplaceConfig.name}</a>.
                   </div>
@@ -208,15 +208,11 @@ export default class Dapp extends React.Component<Props, State> {
 
             {!this.isWalletConnected() || this.state.isWhitelistMintEnabled ?
               <div className="merkle-proof-manual-address">
-                <h2>Whitelist Proof</h2>
-                <p>
-                  You can enter you address to check your on the Whitelist.
-                </p>
+                <h2 className="uppercase">Random List Check</h2>
 
                 {this.state.merkleProofManualAddressFeedbackMessage ? <div className="feedback-message">{this.state.merkleProofManualAddressFeedbackMessage}</div> : null}
 
-                <label htmlFor="merkle-proof-manual-address">Public address:</label>
-                <input id="merkle-proof-manual-address" type="text" placeholder="0x000..." disabled={this.state.userAddress !== null} value={this.state.userAddress ?? this.state.merkleProofManualAddress} ref={(input) => this.merkleProofManualAddressInput = input!} onChange={() => {this.setState({merkleProofManualAddress: this.merkleProofManualAddressInput.value})}} /> <button onClick={() => this.copyMerkleProofToClipboard()}>Generate and copy to clipboard</button>
+                {!this.isWalletConnected() ? <button className="bg-transparent uppercase border border-1 border-white" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Validate Your Wallet</button> : null}
               </div>
               : null}
           </div>

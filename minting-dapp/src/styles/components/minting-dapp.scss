@@ -31,8 +31,9 @@
     .merkle-proof-manual-address {
       @apply flex flex-col;
       @apply mt-4;
-
-      @apply bg-black h2 {
+      @apply bg-black;
+      
+      h2 {
         @apply font-semibold;
         @apply text-white text-xl text-center;
       }
@@ -95,7 +96,7 @@
       color: white;
 
       .label {
-        @apply text-xs text-white;
+        @apply text-sm text-white;
       }
     }
 
@@ -135,24 +136,20 @@
   .collection-sold-out {
     @apply rounded-lg;
     @apply px-6 py-4;
-
     @apply text-center;
     @apply bg-black;
 
     &.cannot-mint .emoji {
       @apply block;
-
       @apply text-xl;
     }
 
     &.not-mainnet {
       @apply bg-coral;
-
       @apply text-black;
 
       .small {
         @apply block;
-
         @apply text-sm;
       }
     }
@@ -160,24 +157,18 @@
     &.collection-sold-out {
       h2 {
         @apply mb-3;
-
         @apply text-xl;
       }
     }
   }
 
   .mint-widget {
-    @apply flex flex-col items-center;
-    @apply rounded-lg;
-    @apply overflow-hidden;
-
+    @apply flex justify-around;
     @apply text-center;
-    @apply bg-black;
 
     .preview {
       @apply p-8;
-
-      @apply bg-BLACK;
+      @apply bg-black;
 
       img {
         max-height: 100% !important;

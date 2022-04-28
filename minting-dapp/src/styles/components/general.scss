@@ -21,7 +21,7 @@ strong {
 }
 
 main {
-  @apply flex flex-col;
+  @apply flex flex-col items-center;
 }
 
 #logo {
@@ -71,22 +71,21 @@ span.emoji {
 }
 
 button {
-  @apply py-2 px-6;
-
+  @apply py-2 px-3;
   @apply rounded-full;
-  
   @apply font-semibold;
+  @apply uppercase;
+  @apply text-black;
   @apply bg-yellow-300;
-  @apply border border-black;
 
   &:hover {
-    @apply opacity-50;
+    @apply bg-green-100;
   }
 
   &.primary {
     @apply text-black;
     @apply bg-yellow-300;
-    @apply border;
+    @apply border border-black;
 
     &:hover {
       @apply opacity-50;
@@ -127,7 +126,16 @@ input[type=text] {
 
 label {
   @apply mt-4 mb-1 ml-1;
-
   @apply font-semibold;
   @apply text-sm text-white;
 }
+
+#header {
+  @apply object-top fixed w-full px-4 flex justify-center lg:justify-between z-40 font-DM;
+
+  img.nav {
+    @apply w-12;
+  }  
+
+}
+

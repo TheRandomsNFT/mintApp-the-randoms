@@ -65,19 +65,19 @@ export default class MintWidget extends React.Component<Props, State> {
           <div className="mint-widget">
             
             <div className="preview">
-            
-              <img src="/build/images/bg3.png" alt="Collection preview" />
+              <img src="/build/images/image.png" alt="Collection preview" />
             </div>
 
             <div className="price">
-              <strong>Total price:</strong> {utils.formatEther(this.props.tokenPrice.mul(this.state.mintAmount))} ETH
+              <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Whitelist Sale</> : <>Public Sale</>}</h2>
+              <h4>{this.props.totalSupply}/{this.props.maxSupply} @ {utils.formatEther(this.props.tokenPrice)} ETH</h4>
+              <button className="primary" onClick={() => this.mint()}>Mint Now</button>
             </div>
 
             <div className="controls">
               <button className="decrease" onClick={() => this.decrementMintAmount()}>-</button>
               <span className="mint-amount">{this.state.mintAmount}</span>
               <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
-              <button className="primary" onClick={() => this.mint()}>Mint</button>
             </div>
           </div>
           :
