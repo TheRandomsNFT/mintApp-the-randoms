@@ -63,22 +63,26 @@ export default class MintWidget extends React.Component<Props, State> {
       <>
         {this.canMint() ?
           <div className="mint-widget">
-            
-            <div className="preview">
-              <img src="/build/images/image.png" alt="Collection preview" />
-            </div>
-
-            <div className="price">
-              <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Whitelist Sale</> : <>Public Sale</>}</h2>
-              <h4>{this.props.totalSupply}/{this.props.maxSupply} @ {utils.formatEther(this.props.tokenPrice)} ETH</h4>
-              <button className="primary" onClick={() => this.mint()}>Mint Now</button>
-            </div>
-
-            <div className="controls">
-              <div className="h-12 flex flex-row">
-                <button className="decrease" onClick={() => this.decrementMintAmount()}>-</button>
-                <span className="mint-amount">{this.state.mintAmount}</span>
-                <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
+            <div className="flex justify-center">           
+              <div className="preview">
+                <img src="/build/images/image.png" alt="Collection preview" />
+              </div>
+              <div className="price">
+                <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Whitelist Sale</> : <>Public Sale</>}</h2>
+                <div className="controls">
+                  <h4>{this.props.totalSupply} / {this.props.maxSupply} @ {utils.formatEther(this.props.tokenPrice)} ETH</h4>
+                  <div className="flex flex-col justify-center">
+                      <div className="h-12 flex flex-row">
+                        <button className="decrease" onClick={() => this.decrementMintAmount()}>-</button>
+                        <span className="mint-amount">{this.state.mintAmount}</span>
+                        <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
+                      </div>
+                      <span className="mt-4 text-[#36454F] text-sm text-center">Max {this.props.maxMintAmountPerTx} / wallet</span>
+                    </div>
+                  </div>
+                  <div>
+                    <button className="primary" onClick={() => this.mint()}>Mint Now</button>
+                  </div>
               </div>
             </div>
           </div>

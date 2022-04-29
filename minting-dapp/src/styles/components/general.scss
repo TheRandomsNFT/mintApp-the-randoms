@@ -5,6 +5,7 @@ body {
   @apply font-DM;
   @apply text-white;
   @apply bg-black;
+  @apply flex flex-col justify-center items-center;
 }
 
 a, a:link, a:visited {
@@ -22,6 +23,7 @@ strong {
 
 main {
   @apply flex flex-col items-center;
+  @apply h-full;
 }
 
 #logo {

@@ -1,6 +1,6 @@
 #minting-dapp {
-  @apply flex flex-col;
-  @apply mt-6 mx-auto;
+  @apply flex flex-col items-center;
+  @apply my-6 mx-auto;
   @apply w-full;
 
   .no-wallet {
@@ -162,11 +162,10 @@
   }
 
   .mint-widget {
-    @apply flex justify-around;
-    @apply w-full;
+    @apply flex justify-center;
+    @apply my-8;
 
     .preview {
-      @apply p-8;
 
       img {
         max-height: 100% !important;
@@ -176,7 +175,7 @@
     }
 
     .price {
-      @apply px-6 py-4;
+      @apply px-6 ml-8;
       @apply flex flex-col justify-between;
 
       h2 {
@@ -188,7 +187,6 @@
       }
 
       button {
-        @apply w-32;
         @apply bg-black;
         @apply text-white font-normal;
         @apply border border-2 border-white;
@@ -209,8 +207,14 @@
       }
     }
 
+    .primary {
+      @apply border-0;
+      @apply px-6 py-2;
+      @apply leading-none;
+    }
+
     .controls {
-      @apply flex items-center;
+      @apply flex justify-between items-center;
 
       .decrease {
         @apply bg-white;
@@ -233,10 +237,6 @@
         @apply text-black;
         @apply bg-white;
         @apply py-2 px-3;
-      }
-
-      .primary {
-        @apply border-0;
       }
     }
   }
