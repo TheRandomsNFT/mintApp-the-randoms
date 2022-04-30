@@ -1,0 +1,11 @@
+{
+  "build/main.css": "/build/main.css",
+  "build/main.js": "/build/main.js",
+  "build/images/image.png": "/build/images/image.png",
+  "build/images/face.png": "/build/images/face.png",
+  "build/images/bg3.png": "/build/images/bg3.png",
+  "build/images/favicon.ico": "/build/images/favicon.ico",
+  "build/images/metamask.png": "/build/images/metamask.png",
+  "build/images/error.png": "/build/images/error.png",
+  "build/images/valid.png": "/build/images/valid.png"
+}
