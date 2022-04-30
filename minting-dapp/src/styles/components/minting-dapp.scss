@@ -162,7 +162,7 @@
   }
 
   .mint-widget {
-    @apply flex justify-center;
+    @apply flex flex-col justify-center;
     @apply my-8;
 
     .preview {
@@ -209,12 +209,16 @@
 
     .primary {
       @apply border-0;
-      @apply px-6 py-2;
+      @apply px-10 py-4;
       @apply leading-none;
     }
 
     .controls {
       @apply flex justify-between items-center;
+
+      button {
+        @apply py-0 px-2
+      }
 
       .decrease {
         @apply bg-white;
@@ -237,6 +241,30 @@
         @apply text-black;
         @apply bg-white;
         @apply py-2 px-3;
+      }
+    }
+  }
+  .random-list-check {
+    @apply px-6 ml-8;
+    @apply flex flex-col justify-center;
+
+    h2 {
+      @apply text-xl uppercase;
+      @apply mb-8;
+    }
+
+    h4 {
+      @apply text-base uppercase;
+    }
+
+    button {
+      @apply bg-black;
+      @apply text-white font-normal;
+      @apply border border-2 border-white;
+
+      :hover {
+        @apply bg-green-100;
+        @apply text-black;
       }
     }
   }

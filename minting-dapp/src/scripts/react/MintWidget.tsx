@@ -62,6 +62,7 @@ export default class MintWidget extends React.Component<Props, State> {
     return (
       <>
         {this.canMint() ?
+        <>
           <div className="mint-widget">
             <div className="flex justify-center">           
               <div className="preview">
@@ -86,10 +87,14 @@ export default class MintWidget extends React.Component<Props, State> {
               </div>
             </div>
           </div>
+          <div className="fixed bottom-0 my-5">
+            <span className="mr-4">* Commercial rights for holders</span>
+            <span className="mr-4">** RC-721A</span>
+            <span className="mr-4">*** 50% of royalties reinvested</span>
+          </div>
+          </>
           :
-          <div className="cannot-mint">
-            <span className="emoji">⏳</span>
-            
+          <div className="cannot-mint">            
             {this.props.isWhitelistMintEnabled ? <>You are not included in the <strong>whitelist</strong>.</> : <>The contract is <strong>paused</strong>.</>}<br />
             Please come back during the next sale!
           </div>

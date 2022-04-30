@@ -56,7 +56,7 @@ span.emoji {
   button {
     @apply inline-block;
     @apply mt-3 ml-auto;
-    @apply px-2 py-1;
+    @apply px-10 py-4;
     @apply rounded-md;
 
     @apply text-sm;
@@ -73,7 +73,7 @@ span.emoji {
 }
 
 button {
-  @apply py-2 px-3;
+  @apply py-4 px-10;
   @apply rounded-full;
   @apply font-semibold;
   @apply uppercase;
@@ -137,7 +137,10 @@ label {
 
   img.nav {
     @apply w-12;
-  }  
+  }
+}
 
+img {
+  height: fit-content;
 }
 
