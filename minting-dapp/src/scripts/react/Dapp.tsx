@@ -114,30 +114,26 @@ export default class Dapp extends React.Component<Props, State> {
     return this.state.network !== null && this.state.network.chainId !== CollectionConfig.mainnet.chainId;
   }
 
+  //We need to change this to use the user address from MetaMask instead of clipboard. Clipboard has been removed.
+
   private copyMerkleProofToClipboard(): void {
-    const userMetaMaskAddress = ethers.Signer.name
-    console.log(userMetaMaskAddress);
-    const merkleProof = Whitelist.getRawProofForAddress(userMetaMaskAddress);
-
-    //const merkleProof = Whitelist.getRawProofForAddress(this.Wallet().toString());
-
+    const merkleProof = Whitelist.getRawProofForAddress(this.state.userAddress!);
+    console.log("address:" + this.state.userAddress);
     if (merkleProof.length < 1) {
       this.setState({
         merkleProofManualAddressFeedbackMessage:
           <>
-            <strong>Your Wallet is not part of the random list.<br /> Try your luck in our public sale.</strong>
+            Your Wallet is not part of the random list.<br /> Try your luck in our public sale.
           </>
       });
 
       return;
     }
 
-    // navigator.clipboard.writeText(merkleProof);
-
     this.setState({
       merkleProofManualAddressFeedbackMessage:
         <>
-          <strong>Your wallet is part of the random list. <br /> Good to go!</strong>
+          Your wallet is part of the random list. <br /> Good to go!
         </>,
     });
   }
@@ -159,7 +155,7 @@ export default class Dapp extends React.Component<Props, State> {
 
         {this.state.errorMessage ? <div className="error"><p>{this.state.errorMessage}</p><button onClick={() => this.setError()}>Close</button></div> : null}
 
-        {/* If sale is paused, we want to see the wallet validation widget which is there is a new condition here */}
+        {/* If sale is paused, we want to see the wallet validation widget which is why there is a new condition here */}
 
         {this.state.isPaused == false ?
           <>
@@ -185,6 +181,7 @@ export default class Dapp extends React.Component<Props, State> {
             }
           </>
           :
+          // wallet validation for whitelist below
           <>
             <div className="mint-widget">
               <div className="flex justify-center">
@@ -195,8 +192,7 @@ export default class Dapp extends React.Component<Props, State> {
                   <h2>Random List<br></br>Check</h2>
                   <div className="merkle-proof-manual-address">
                     <div>
-                      <button className="bg-transparent uppercase border border-1 border-white" disabled={this.provider === undefined} onClick={() => this.copyMerkleProofToClipboard()}>Validate Your Wallet</button>
-                      {this.state.merkleProofManualAddressFeedbackMessage ? <span></span> : null}
+                      <button disabled={this.provider === undefined || !this.isWalletConnected()} onClick={() => this.copyMerkleProofToClipboard()}>Validate Your Wallet</button>
                     </div>
                     {this.state.merkleProofManualAddressFeedbackMessage ? <div className="feedback-message">{this.state.merkleProofManualAddressFeedbackMessage}</div> : null}
                   </div>
