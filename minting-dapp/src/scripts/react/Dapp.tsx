@@ -1,5 +1,5 @@
 import React from 'react';
-import { ethers, BigNumber } from 'ethers'
+import { ethers, BigNumber, Wallet } from 'ethers'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers';
 import detectEthereumProvider from '@metamask/detect-provider';
 import NftContractType from '../lib/NftContractType';
@@ -15,8 +15,8 @@ interface Props {
 }
 
 interface State {
-  userAddress: string|null;
-  network: ethers.providers.Network|null,
+  userAddress: string | null;
+  network: ethers.providers.Network | null,
   networkConfig: NetworkConfigInterface,
   totalSupply: number;
   maxSupply: number;
@@ -26,8 +26,8 @@ interface State {
   isWhitelistMintEnabled: boolean;
   isUserInWhitelist: boolean;
   merkleProofManualAddress: string;
-  merkleProofManualAddressFeedbackMessage: string|JSX.Element|null;
-  errorMessage: string|JSX.Element|null,
+  merkleProofManualAddressFeedbackMessage: string | JSX.Element | null;
+  errorMessage: string | JSX.Element | null,
 }
 
 const defaultState: State = {
@@ -79,6 +79,7 @@ export default class Dapp extends React.Component<Props, State> {
     this.registerWalletEvents(browserProvider);
 
     await this.initWallet();
+
   }
 
   async mintTokens(amount: number): Promise<void> {
@@ -89,8 +90,7 @@ export default class Dapp extends React.Component<Props, State> {
     }
   }
 
-  async whitelistMintTokens(amount: number): Promise<void> 
-  {
+  async whitelistMintTokens(amount: number): Promise<void> {
     try {
       await this.contract.whitelistMint(amount, Whitelist.getProofForAddress(this.state.userAddress!), { value: this.state.tokenPrice.mul(amount) });
     } catch (e) {
@@ -115,20 +115,24 @@ export default class Dapp extends React.Component<Props, State> {
   }
 
   private copyMerkleProofToClipboard(): void {
-    const merkleProof = Whitelist.getRawProofForAddress(this.state.userAddress ?? this.state.merkleProofManualAddress);
+    const userMetaMaskAddress = ethers.Signer.name
+    console.log(userMetaMaskAddress);
+    const merkleProof = Whitelist.getRawProofForAddress(userMetaMaskAddress);
+
+    //const merkleProof = Whitelist.getRawProofForAddress(this.Wallet().toString());
 
     if (merkleProof.length < 1) {
       this.setState({
-        merkleProofManualAddressFeedbackMessage: 
-        <>
-         <strong>Your Wallet is not part of the random list.<br /> Try your luck in our public sale.</strong>
-        </>
+        merkleProofManualAddressFeedbackMessage:
+          <>
+            <strong>Your Wallet is not part of the random list.<br /> Try your luck in our public sale.</strong>
+          </>
       });
 
       return;
     }
 
-    navigator.clipboard.writeText(merkleProof);
+    // navigator.clipboard.writeText(merkleProof);
 
     this.setState({
       merkleProofManualAddressFeedbackMessage:
@@ -143,7 +147,7 @@ export default class Dapp extends React.Component<Props, State> {
       <>
         <header className="top-0 fixed w-full my-5 px-4 block font-normal">
           <img src="/build/images/face.png" className="block float-left w-12" />
-          <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4" width="24px" height="24px"/></button>
+          <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4" width="24px" height="24px" /></button>
         </header>
 
         {this.isNotMainnet() ?
@@ -155,7 +159,9 @@ export default class Dapp extends React.Component<Props, State> {
 
         {this.state.errorMessage ? <div className="error"><p>{this.state.errorMessage}</p><button onClick={() => this.setError()}>Close</button></div> : null}
 
-        {this.isWalletConnected() ?
+        {/* If sale is paused, we want to see the wallet validation widget which is there is a new condition here */}
+
+        {this.state.isPaused == false ?
           <>
             {this.state.totalSupply < this.state.maxSupply ?
               <MintWidget
@@ -170,138 +176,134 @@ export default class Dapp extends React.Component<Props, State> {
                 whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
               />
               :
+              <>
               <div className="collection-sold-out">
                 <h2>The Randoms have been <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
                 You can buy from our beloved holders on <a href={this.generateMarketplaceUrl()} target="_blank">{CollectionConfig.marketplaceConfig.name}</a>.
               </div>
+              </>
             }
           </>
-          : null}
-
-        {!this.isSoldOut() ?
-          <div className="mint-widget">
-            <div className="flex justify-center">
-              <div className="preview">
-                <img src="/build/images/image.png" alt="Collection preview" />
-              </div>
-              <div className="random-list-check">
-                <h2>Random List<br></br>Check</h2>
-                {!this.isWalletConnected() || this.state.isWhitelistMintEnabled ?
+          :
+          <>
+            <div className="mint-widget">
+              <div className="flex justify-center">
+                <div className="preview">
+                  <img src="/build/images/image.png" alt="Collection preview" />
+                </div>
+                <div className="random-list-check">
+                  <h2>Random List<br></br>Check</h2>
                   <div className="merkle-proof-manual-address">
+                    <div>
+                      <button className="bg-transparent uppercase border border-1 border-white" disabled={this.provider === undefined} onClick={() => this.copyMerkleProofToClipboard()}>Validate Your Wallet</button>
+                      {this.state.merkleProofManualAddressFeedbackMessage ? <span></span> : null}
+                    </div>
                     {this.state.merkleProofManualAddressFeedbackMessage ? <div className="feedback-message">{this.state.merkleProofManualAddressFeedbackMessage}</div> : null}
-
-                    <button className="bg-transparent uppercase border border-1 border-white" disabled={this.provider === undefined} onClick={() => this.copyMerkleProofToClipboard()}>Validate Your Wallet</button>
                   </div>
-                  : null}
+                </div>
               </div>
             </div>
-          </div>
-          : null}
+          </>
+        }
       </>
     );
   }
 
-  private setError(error: any = null): void
-  {
+  private setError(error: any = null): void {
     let errorMessage = 'Unknown error...';
 
-    if(null === error || typeof error === 'string') {
-  errorMessage = error;
-} else if (typeof error === 'object') {
-  // Support any type of error from the Web3 Provider...
-  if (error?.error?.message !== undefined) {
-    errorMessage = error.error.message;
-  } else if (error?.data?.message !== undefined) {
-    errorMessage = error.data.message;
-  } else if (error?.message !== undefined) {
-    errorMessage = error.message;
-  } else if (React.isValidElement(error)) {
-    this.setState({ errorMessage: error });
+    if (null === error || typeof error === 'string') {
+      errorMessage = error;
+    } else if (typeof error === 'object') {
+      // Support any type of error from the Web3 Provider...
+      if (error?.error?.message !== undefined) {
+        errorMessage = error.error.message;
+      } else if (error?.data?.message !== undefined) {
+        errorMessage = error.data.message;
+      } else if (error?.message !== undefined) {
+        errorMessage = error.message;
+      } else if (React.isValidElement(error)) {
+        this.setState({ errorMessage: error });
 
-    return;
-  }
-}
+        return;
+      }
+    }
 
-this.setState({
-  errorMessage: null === errorMessage ? null : errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1),
-});
-  }
-
-  private generateContractUrl(): string
-{
-  return this.state.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!);
-}
-
-  private generateMarketplaceUrl(): string
-{
-  return CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !this.isNotMainnet());
-}
-
-  private async connectWallet(): Promise < void>
-{
-  try {
-    await this.provider.provider.request!({ method: 'eth_requestAccounts' });
-
-    this.initWallet();
-  } catch(e) {
-    this.setError(e);
-  }
-}
-
-  private async initWallet(): Promise < void>
-{
-  const walletAccounts = await this.provider.listAccounts();
-
-  this.setState(defaultState);
-
-  if(walletAccounts.length === 0) {
-  return;
-}
-
-const network = await this.provider.getNetwork();
-let networkConfig: NetworkConfigInterface;
-
-if (network.chainId === CollectionConfig.mainnet.chainId) {
-  networkConfig = CollectionConfig.mainnet;
-} else if (network.chainId === CollectionConfig.testnet.chainId) {
-  networkConfig = CollectionConfig.testnet;
-} else {
-  this.setError('Unsupported network!');
-
-  return;
-}
-
-this.setState({
-  userAddress: walletAccounts[0],
-  network,
-  networkConfig,
-});
-
-if (await this.provider.getCode(CollectionConfig.contractAddress!) === '0x') {
-  this.setError('Could not find the contract, are you connected to the right chain?');
-
-  return;
-}
-
-this.contract = new ethers.Contract(
-  CollectionConfig.contractAddress!,
-  ContractAbi,
-  this.provider.getSigner(),
-) as NftContractType;
-
-this.setState({
-  maxSupply: (await this.contract.maxSupply()).toNumber(),
-  totalSupply: (await this.contract.totalSupply()).toNumber(),
-  maxMintAmountPerTx: (await this.contract.maxMintAmountPerTx()).toNumber(),
-  tokenPrice: await this.contract.cost(),
-  isPaused: await this.contract.paused(),
-  isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
-  isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
-});
+    this.setState({
+      errorMessage: null === errorMessage ? null : errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1),
+    });
   }
 
-  private registerWalletEvents(browserProvider: ExternalProvider): void
-  {
+  private generateContractUrl(): string {
+    return this.state.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!);
+  }
+
+  private generateMarketplaceUrl(): string {
+    return CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !this.isNotMainnet());
+  }
+
+  private async connectWallet(): Promise<void> {
+    try {
+      await this.provider.provider.request!({ method: 'eth_requestAccounts' });
+
+      this.initWallet();
+    } catch (e) {
+      this.setError(e);
+    }
+  }
+
+  private async initWallet(): Promise<void> {
+    const walletAccounts = await this.provider.listAccounts();
+
+    this.setState(defaultState);
+
+    if (walletAccounts.length === 0) {
+      return;
+    }
+
+    const network = await this.provider.getNetwork();
+    let networkConfig: NetworkConfigInterface;
+
+    if (network.chainId === CollectionConfig.mainnet.chainId) {
+      networkConfig = CollectionConfig.mainnet;
+    } else if (network.chainId === CollectionConfig.testnet.chainId) {
+      networkConfig = CollectionConfig.testnet;
+    } else {
+      this.setError('Unsupported network!');
+
+      return;
+    }
+
+    this.setState({
+      userAddress: walletAccounts[0],
+      network,
+      networkConfig,
+    });
+
+    if (await this.provider.getCode(CollectionConfig.contractAddress!) === '0x') {
+      this.setError('Could not find the contract, are you connected to the right chain?');
+
+      return;
+    }
+
+    this.contract = new ethers.Contract(
+      CollectionConfig.contractAddress!,
+      ContractAbi,
+      this.provider.getSigner(),
+    ) as NftContractType;
+
+    this.setState({
+      maxSupply: (await this.contract.maxSupply()).toNumber(),
+      totalSupply: (await this.contract.totalSupply()).toNumber(),
+      maxMintAmountPerTx: (await this.contract.maxMintAmountPerTx()).toNumber(),
+      tokenPrice: await this.contract.cost(),
+      isPaused: await this.contract.paused(),
+      isWhitelistMintEnabled: await this.contract.whitelistMintEnabled(),
+      isUserInWhitelist: Whitelist.contains(this.state.userAddress ?? ''),
+    });
+  }
+
+  private registerWalletEvents(browserProvider: ExternalProvider): void {
     // @ts-ignore
     browserProvider.on('accountsChanged', () => {
       this.initWallet();

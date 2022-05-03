@@ -84,6 +84,10 @@ button {
     @apply bg-green-100;
   }
 
+  &:disabled {
+    @apply bg-green-100;
+  }
+
   &.primary {
     @apply text-black;
     @apply bg-yellow-300;
@@ -94,7 +98,7 @@ button {
     }
 
     &:disabled {
-      @apply opacity-30;
+      @apply bg-green-100;
 
       &:hover {
         @apply cursor-not-allowed;
@@ -118,7 +122,7 @@ input[type=text] {
   }
 
   &:disabled {
-    @apply opacity-50;
+    @apply bg-green-100;
 
     &:hover {
       @apply cursor-not-allowed;
