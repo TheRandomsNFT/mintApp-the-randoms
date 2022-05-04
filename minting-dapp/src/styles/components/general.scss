@@ -151,17 +151,19 @@ img {
 }
 
 #mobile-message {
-  @apply block;
+  @apply flex flex-col justify-center items-center;
   @apply lg:hidden;
   @apply text-center;
   @apply text-base;
 
   h3 {
     @apply mt-4;
+    @apply uppercase;
   }
 
   img {
-    @apply w-full;
+    @apply w-24;
+    @apply mt-4;
     @apply h-auto;
     @apply px-2;
   }
