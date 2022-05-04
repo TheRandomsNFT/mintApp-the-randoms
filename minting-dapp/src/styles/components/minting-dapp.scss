@@ -47,16 +47,28 @@
     }
 
     .feedback-message {
-      @apply mt-4;
+      @apply mt-8;
       @apply text-mobile;
       @apply font-normal;
       color: #707070;
+
+      .message-group {
+        @apply flex;
+
+        img {
+          @apply w-8;
+          @apply mr-8;
+          @apply mx-4;
+        }
+        
+      }
     }
 
     input {
       @apply rounded-t-lg;
       @apply rounded-b-none;
     }
+
   }
 
   .collection-not-ready {

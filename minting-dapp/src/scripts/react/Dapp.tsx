@@ -123,7 +123,7 @@ export default class Dapp extends React.Component<Props, State> {
       this.setState({
         merkleProofManualAddressFeedbackMessage:
           <>
-            Your Wallet is not part of the random list.<br /> Try your luck in our public sale.
+            <div className="message-group"><img src="/build/images/error.png" />Your Wallet is not part of the random list.<br /> Try your luck in our public sale.</div>
           </>
       });
 
@@ -133,7 +133,7 @@ export default class Dapp extends React.Component<Props, State> {
     this.setState({
       merkleProofManualAddressFeedbackMessage:
         <>
-          Your wallet is part of the random list. <br /> Good to go!
+          <div className="message-group"><img src="/build/images/valid.png" />Your wallet is part of the random list. <br /> Good to go!</div>
         </>,
     });
   }
