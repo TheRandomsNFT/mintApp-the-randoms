@@ -1,5 +1,7 @@
 #minting-dapp {
-  @apply flex flex-col items-center;
+  @apply hidden;
+  @apply lg:flex;
+  @apply flex-col items-center;
   @apply my-6 mx-auto;
   @apply w-full;
 
@@ -35,7 +37,8 @@
     
     h2 {
       @apply font-semibold;
-      @apply text-white text-xl;
+      @apply text-xl;
+      @apply text-white;
     }
 
     p {
@@ -162,12 +165,12 @@
       img {
         max-height: 100% !important;
         @apply m-auto;
-        @apply w-96;
+        @apply w-[440px];
       }
     }
 
     .price {
-      @apply px-6 ml-8;
+      @apply px-6 ml-24;
       @apply flex flex-col justify-between;
 
       h2 {
@@ -237,7 +240,7 @@
     }
   }
   .random-list-check {
-    @apply px-6 ml-8;
+    @apply px-6 ml-24;
     @apply flex flex-col justify-center;
 
     h2 {

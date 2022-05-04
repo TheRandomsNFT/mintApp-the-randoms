@@ -141,9 +141,9 @@ export default class Dapp extends React.Component<Props, State> {
   render() {
     return (
       <>
-        <header className="top-0 fixed w-full my-5 px-4 block font-normal">
-          <img src="/build/images/face.png" className="block float-left w-12" />
-          <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4" width="24px" height="24px" /></button>
+        <header className="top-0 fixed w-full my-5 px-4 flex items-center">
+          <img src="/build/images/face.png" className="block float-left w-16" />
+          <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4" width="36px" height="36px" /></button>
         </header>
 
         {this.isNotMainnet() ?

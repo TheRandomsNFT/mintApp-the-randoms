@@ -73,12 +73,14 @@ span.emoji {
 }
 
 button {
-  @apply py-4 px-10;
+  @apply pb-3 pt-3 px-10;
   @apply rounded-full;
-  @apply font-semibold;
   @apply uppercase;
   @apply text-black;
   @apply bg-yellow-300;
+  @apply text-button;
+  @apply tracking-wider;
+  line-height: 2.4rem;
 
   &:hover {
     @apply bg-green-100;
@@ -148,3 +150,13 @@ img {
   height: fit-content;
 }
 
+#mobile-message {
+  @apply block;
+  @apply lg:hidden;
+  @apply text-center;
+  @apply text-base;
+
+  h3 {
+    @apply mt-4;
+  }
+}
