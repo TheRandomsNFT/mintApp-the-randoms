@@ -159,4 +159,9 @@ img {
   h3 {
     @apply mt-4;
   }
+
+  img {
+    @apply w-full;
+    @apply px-2;
+  }
 }
