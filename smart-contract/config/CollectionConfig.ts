@@ -6,11 +6,11 @@ import whitelistAddresses from './whitelist.json';
 const CollectionConfig: CollectionConfigInterface = {
   testnet: ethereumTestnet,
   mainnet: ethereumMainnet,
-  contractName: 'TheRandoms',
-  tokenName: 'The Randoms',
-  tokenSymbol: 'RNDMS',
-  hiddenMetadataUri: 'ipfs://QmdGeLAvPLfAbzRvNLceB5SUc7r8XKY3qVjVUWEQgArBfS/Hiden_Metadata.json', 
-  maxSupply: 8888,
+  contractName: 'TheRandomsTest',
+  tokenName: 'The Randoms - Test',
+  tokenSymbol: 'RNDMST',
+  hiddenMetadataUri: 'ipfs://QmeihYjAmGm6nwyXsgvyvmD4rctv4ymrkSYJrygKssXopJ/Hiden_Metadata.json', 
+  maxSupply: 2000,
   whitelistSale: {
     price: 0.05,
     maxMintAmountPerTx: 3,
@@ -23,8 +23,8 @@ const CollectionConfig: CollectionConfigInterface = {
     price: 0.06,
     maxMintAmountPerTx: 2,
   },
-  contractAddress: "0xc82a098d77766e99135b921a83ffe0de593e9cfc",
-  marketplaceIdentifier: 'The Randoms',
+  contractAddress: "0x5cd26ecb1665d107ee7a62073c6d592608c12e06",
+  marketplaceIdentifier: 'The Randoms Testing',
   marketplaceConfig: openSea,
   whitelistAddresses: whitelistAddresses,
 };
