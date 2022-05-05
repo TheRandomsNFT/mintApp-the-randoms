@@ -73,14 +73,14 @@ span.emoji {
 }
 
 button {
-  @apply pb-3 pt-3 px-10;
+  @apply py-2 px-8;
   @apply rounded-full;
   @apply uppercase;
   @apply text-black;
   @apply bg-yellow-300;
   @apply text-button;
   @apply tracking-wider;
-  line-height: 2.4rem;
+  line-height: 2.6rem;
 
   &:hover {
     @apply bg-green-100;
