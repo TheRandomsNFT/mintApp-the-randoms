@@ -157,7 +157,7 @@ export default class Dapp extends React.Component<Props, State> {
 
         {/* If sale is paused, we want to see the wallet validation widget which is why there is a new condition here */}
 
-        {this.state.isPaused == false ?
+        {this.isWalletConnected() ?
           <>
             {this.state.totalSupply < this.state.maxSupply ?
               <MintWidget
@@ -180,8 +180,8 @@ export default class Dapp extends React.Component<Props, State> {
               </>
             }
           </>
-          :
-          // wallet validation for whitelist below
+          : 
+//   wallet validation for whitelist below
           <>
             <div className="mint-widget">
               <div className="flex justify-center">
@@ -190,17 +190,19 @@ export default class Dapp extends React.Component<Props, State> {
                 </div>
                 <div className="random-list-check">
                   <h2>Random List<br></br>Check</h2>
+                  {this.isWalletConnected() ?
                   <div className="merkle-proof-manual-address">
                     <div>
                       <button disabled={this.provider === undefined || !this.isWalletConnected()} onClick={() => this.copyMerkleProofToClipboard()}>Validate Your Wallet</button>
                     </div>
                     {this.state.merkleProofManualAddressFeedbackMessage ? <div className="feedback-message">{this.state.merkleProofManualAddressFeedbackMessage}</div> : null}
                   </div>
+                  : null}
                 </div>
               </div>
             </div>
           </>
-        }
+          }
       </>
     );
   }

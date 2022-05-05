@@ -29,7 +29,7 @@ export default class MintWidget extends React.Component<Props, State> {
   }
 
   private canMint(): boolean {
-    return !this.props.isPaused || this.canWhitelistMint();
+    return this.canWhitelistMint();
   }
 
   private canWhitelistMint(): boolean {
@@ -93,12 +93,13 @@ export default class MintWidget extends React.Component<Props, State> {
             <span className="mr-4">*** 50% of royalties reinvested</span>
           </div>
           </>
-          :
-          <div className="cannot-mint">            
-            {this.props.isWhitelistMintEnabled ? <>You are not included in the <strong>whitelist</strong>.</> : <>The contract is <strong>paused</strong>.</>}<br />
-            Please come back during the next sale!
-          </div>
-        }
+          : null
+
+//          <div className="cannot-mint">            
+//            {this.props.isWhitelistMintEnabled ? <>You are not included in the <strong>whitelist</strong>.</> : <>The contract is <strong>paused</strong>.</>}<br />
+//            Please come back during the next sale!
+//          </div>
+              }
       </>
     );
   }

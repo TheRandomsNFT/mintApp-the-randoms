@@ -198,6 +198,12 @@
         @apply text-white font-normal;
         @apply border border-2 border-white;
 
+        &.decrease,
+        &.increase {
+          line-height: 0 !important;
+        }
+        
+
         :hover {
           @apply bg-green-100;
           @apply text-black;

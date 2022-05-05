@@ -7,7 +7,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/cryptography/MerkleProof.sol';
 import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
-contract TheRandoms is ERC721A, Ownable, ReentrancyGuard {
+contract TheRandomsTest is ERC721A, Ownable, ReentrancyGuard {
 
   using Strings for uint256;
 
