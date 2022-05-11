@@ -57,14 +57,14 @@ contract TheRandomsTest is ERC721A, Ownable, ReentrancyGuard {
     require(!whitelistClaimed[_msgSender()], 'Address already claimed!');
     bytes32 leaf = keccak256(abi.encodePacked(_msgSender()));
     require(MerkleProof.verify(_merkleProof, merkleRoot, leaf), 'Invalid proof!');
-    require(balanceOf(msg.sender) < 4, "Can only Mint 5");
+    require(balanceOf(msg.sender) < 4, "Can only Mint 3");
     whitelistClaimed[_msgSender()] = false;
     _safeMint(_msgSender(), _mintAmount);
   }
 
   function mint(uint256 _mintAmount) public payable mintCompliance(_mintAmount) mintPriceCompliance(_mintAmount) {
     require(!paused, 'The contract is paused!');
-    require(balanceOf(msg.sender) < 9, "Can only Mint 10");
+    require(balanceOf(msg.sender) < 3, "Can only Mint 2");
     _safeMint(_msgSender(), _mintAmount);
   }
   
