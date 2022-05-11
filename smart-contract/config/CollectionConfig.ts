@@ -23,7 +23,7 @@ const CollectionConfig: CollectionConfigInterface = {
     price: 0.01,
     maxMintAmountPerTx: 2,
   },
-  contractAddress: "",
+  contractAddress: "0x5cd26ecb1665d107ee7a62073c6d592608c12e06",
   marketplaceIdentifier: 'The Randoms Testing',
   marketplaceConfig: openSea,
   whitelistAddresses: whitelistAddresses,
