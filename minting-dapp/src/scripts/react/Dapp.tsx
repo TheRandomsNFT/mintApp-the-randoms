@@ -142,7 +142,7 @@ export default class Dapp extends React.Component<Props, State> {
     return (
       <>
         <header className="top-0 fixed w-full my-5 px-4 flex items-center">
-          <img src="/build/images/face.png" className="block float-left w-16" />
+          <img src="/build/images/face.png" className="block float-left w-12" />
           <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4" width="36px" height="36px" /></button>
         </header>
 
@@ -156,53 +156,49 @@ export default class Dapp extends React.Component<Props, State> {
         {this.state.errorMessage ? <div className="error"><p>{this.state.errorMessage}</p><button onClick={() => this.setError()}>Close</button></div> : null}
 
         {/* If sale is paused, we want to see the wallet validation widget which is why there is a new condition here */}
-
         {this.isWalletConnected() ?
           <>
-            {this.state.totalSupply < this.state.maxSupply ?
-              <MintWidget
-                maxSupply={this.state.maxSupply}
-                totalSupply={this.state.totalSupply}
-                tokenPrice={this.state.tokenPrice}
-                maxMintAmountPerTx={this.state.maxMintAmountPerTx}
-                isPaused={this.state.isPaused}
-                isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
-                isUserInWhitelist={this.state.isUserInWhitelist}
-                mintTokens={(mintAmount) => this.mintTokens(mintAmount)}
-                whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
-              />
-              :
+            {this.isContractReady() ?
               <>
-              <div className="collection-sold-out">
-                <h2>The Randoms have been <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
-                You can buy from our beloved holders on <a href={this.generateMarketplaceUrl()} target="_blank">{CollectionConfig.marketplaceConfig.name}</a>.
-              </div>
+                {this.state.totalSupply < this.state.maxSupply ?
+                  <MintWidget
+                    maxSupply={this.state.maxSupply}
+                    totalSupply={this.state.totalSupply}
+                    tokenPrice={this.state.tokenPrice}
+                    maxMintAmountPerTx={this.state.maxMintAmountPerTx}
+                    isPaused={this.state.isPaused}
+                    isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
+                    isUserInWhitelist={this.state.isUserInWhitelist}
+                    mintTokens={(mintAmount) => this.mintTokens(mintAmount)}
+                    whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
+                  />
+                  :
+                  <div className="collection-sold-out">
+                    <h2>The Randoms is <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
+
+                    You can buy from our community on <a href={this.generateMarketplaceUrl()} target="_blank">{CollectionConfig.marketplaceConfig.name}</a>.
+                  </div>
+                }
               </>
+              : null
             }
           </>
-          : 
-//   wallet validation for whitelist below
-          <>
-            <div className="mint-widget">
-              <div className="flex justify-center">
-                <div className="preview">
-                  <img src="/build/images/image.png" alt="Collection preview" />
-                </div>
-                <div className="random-list-check">
-                  <h2>Random List<br></br>Check</h2>
-                  {this.isWalletConnected() ?
-                  <div className="merkle-proof-manual-address">
-                    <div>
-                      <button disabled={this.provider === undefined || !this.isWalletConnected()} onClick={() => this.copyMerkleProofToClipboard()}>Validate Your Wallet</button>
-                    </div>
-                    {this.state.merkleProofManualAddressFeedbackMessage ? <div className="feedback-message">{this.state.merkleProofManualAddressFeedbackMessage}</div> : null}
-                  </div>
-                  : null}
-                </div>
-              </div>
-            </div>
-          </>
-          }
+        : 
+        <>
+          <MintWidget
+            maxSupply={this.state.maxSupply}
+            totalSupply={this.state.totalSupply}
+            tokenPrice={this.state.tokenPrice}
+            maxMintAmountPerTx={this.state.maxMintAmountPerTx}
+            isPaused={this.state.isPaused}
+            isWhitelistMintEnabled={this.state.isWhitelistMintEnabled}
+            isUserInWhitelist={this.state.isUserInWhitelist}
+            mintTokens={(mintAmount) => this.mintTokens(mintAmount)}
+            whitelistMintTokens={(mintAmount) => this.whitelistMintTokens(mintAmount)}
+          />
+      </>
+        }
+
       </>
     );
   }

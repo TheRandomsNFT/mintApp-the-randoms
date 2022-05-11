@@ -72,8 +72,9 @@ span.emoji {
   }
 }
 
-button {
-  @apply py-2 px-8;
+button,
+a {
+  @apply pb-0 pt-[0.4rem] px-8;
   @apply rounded-full;
   @apply uppercase;
   @apply text-black;

@@ -115,7 +115,6 @@
 
       .address {
         @apply w-full;
-
         @apply font-semibold;
         @apply truncate;
         @apply text-center;
@@ -126,7 +125,6 @@
     .current-sale {
       .label {
         @apply block;
-
         @apply font-semibold;
       }
 
@@ -144,6 +142,8 @@
     @apply px-6 py-4;
     @apply text-center;
     @apply bg-black;
+    @apply text-xl;
+    @apply font-semibold;
 
     &.cannot-mint .emoji {
       @apply block;
@@ -222,8 +222,12 @@
 
     .primary {
       @apply border-0;
-      @apply px-10 py-4;
-      @apply leading-none;
+      @apply px-8 pb-[0.1rem] pt-[0.4rem];
+
+      &.disabled {
+        @apply border-[#707070];
+        @apply text-[#707070];
+      }
     }
 
     .controls {
@@ -238,12 +242,14 @@
         @apply text-black;
         @apply rounded-l-full;
         @apply rounded-r-none;
+        @apply text-base;
         @apply py-2 pl-3;
       }
 
       .increase {
         @apply bg-white;
         @apply text-black;
+        @apply text-base;
         @apply rounded-r-full;
         @apply rounded-l-none;
         @apply py-2 pr-3;
@@ -252,6 +258,7 @@
       .mint-amount {
         @apply flex items-center justify-center;
         @apply text-black;
+        @apply text-base;
         @apply bg-white;
         @apply py-2 px-3;
       }
@@ -270,27 +277,21 @@
       @apply text-base uppercase;
     }
 
-    button {
+    a {
       @apply bg-black;
       @apply text-white font-normal;
       @apply border border-4 border-white;
-
+      @apply py-2 px-8;
+      @apply rounded-full;
+      @apply uppercase;
+      @apply text-button;
+      @apply tracking-wider;
+      @apply no-underline;
+      
       &:hover {
         @apply bg-green-100;
         @apply text-black;
         @apply border-green-100;
-      }
-    
-      &:disabled {
-        @apply border-[#707070];
-        @apply text-[#707070];
-
-        &:hover {
-          @apply cursor-not-allowed;
-          @apply border-[#707070];
-          @apply text-[#707070];
-          @apply bg-black;
-        }
       }
     }
   }
