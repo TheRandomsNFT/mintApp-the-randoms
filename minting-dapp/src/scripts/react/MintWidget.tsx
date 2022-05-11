@@ -29,7 +29,7 @@ export default class MintWidget extends React.Component<Props, State> {
   }
 
   private canMint(): boolean {
-    return this.canWhitelistMint();
+    return !this.props.isPaused || this.canWhitelistMint();
   }
 
   private canWhitelistMint(): boolean {
@@ -61,12 +61,12 @@ export default class MintWidget extends React.Component<Props, State> {
   render() {
     return (
       <>
-        {this.canMint() ?
+       {this.canMint() ?
         <>
           <div className="mint-widget">
             <div className="flex justify-center">           
               <div className="preview">
-                <img src="/build/images/image.png" alt="Collection preview" />
+                <img src="/build/images/intro.gif" alt="Collection preview" />
               </div>
               <div className="price">
                 <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Whitelist Sale</> : <>Public Sale</>}</h2>
@@ -93,13 +93,25 @@ export default class MintWidget extends React.Component<Props, State> {
             <span className="mr-4">*** 50% of royalties reinvested</span>
           </div>
           </>
-          : null
-
-//          <div className="cannot-mint">            
-//            {this.props.isWhitelistMintEnabled ? <>You are not included in the <strong>whitelist</strong>.</> : <>The contract is <strong>paused</strong>.</>}<br />
-//            Please come back during the next sale!
-//          </div>
-              }
+          :
+          <>
+          <div className="mint-widget">
+            <div className="flex justify-center">           
+              <div className="preview">
+                <img src="/build/images/intro.gif" alt="Collection preview" />
+              </div>
+              <div className="random-list-check">
+                  <h2>Random List<br></br>Check</h2>
+                  <div className="merkle-proof-manual-address">
+                    <div>
+                      <a className="validate-wallet" href="https://www.premint.xyz/therandoms/" target="_blank">Validate Your Wallet</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          </>
+          }
       </>
     );
   }
