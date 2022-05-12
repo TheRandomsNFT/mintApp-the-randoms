@@ -143,7 +143,7 @@ export default class Dapp extends React.Component<Props, State> {
       <>
         <header className="top-0 fixed w-full my-5 px-4 flex items-center">
           <img src="/build/images/face.png" className="block float-left w-12" />
-          <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4" width="36px" height="36px" /></button>
+          <button className="fixed right-0 mr-4 flex" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Connect Wallet <img src="/build/images/metamask.png" className="ml-4 mt-2" width="28px" height="28px" /></button>
         </header>
 
         {this.isNotMainnet() ?
@@ -175,8 +175,6 @@ export default class Dapp extends React.Component<Props, State> {
                   :
                   <div className="collection-sold-out">
                     <h2>The Randoms is <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
-
-                    You can buy from our community on <a href={this.generateMarketplaceUrl()} target="_blank">{CollectionConfig.marketplaceConfig.name}</a>.
                   </div>
                 }
               </>

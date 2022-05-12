@@ -222,7 +222,7 @@
 
     .primary {
       @apply border-0;
-      @apply px-8 pb-[0.1rem] pt-[0.4rem];
+      @apply px-8 py-1;
 
       &.disabled {
         @apply border-[#707070];
@@ -281,12 +281,14 @@
       @apply bg-black;
       @apply text-white font-normal;
       @apply border border-2 border-white;
-      @apply pb-2 pt-[0.8rem] px-8;
+      @apply py-[0.5rem] px-8;
       @apply rounded-full;
       @apply uppercase;
       @apply text-button;
       @apply tracking-wider;
       @apply no-underline;
+      line-height: 2.6rem;
+
       
       &:hover {
         @apply bg-green-100;
