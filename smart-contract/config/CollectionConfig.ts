@@ -10,17 +10,17 @@ const CollectionConfig: CollectionConfigInterface = {
   tokenName: 'The Randoms - Test',
   tokenSymbol: 'RNDMST',
   hiddenMetadataUri: 'ipfs://QmeihYjAmGm6nwyXsgvyvmD4rctv4ymrkSYJrygKssXopJ/Hiden_Metadata.json', 
-  maxSupply: 2000,
+  maxSupply: 8888,
   whitelistSale: {
     price: 0.00,
-    maxMintAmountPerTx: 300,
+    maxMintAmountPerTx: 800,
   },
   preSale: {
     price: 0.00,
-    maxMintAmountPerTx: 2000,
+    maxMintAmountPerTx: 0,
   },
   publicSale: {
-    price: 0.01,
+    price: 0.06,
     maxMintAmountPerTx: 2,
   },
   contractAddress: "0x5cd26ecb1665d107ee7a62073c6d592608c12e06",
