@@ -142,8 +142,6 @@
     @apply px-6 py-4;
     @apply text-center;
     @apply bg-black;
-    @apply text-xl;
-    @apply font-semibold;
 
     &.cannot-mint .emoji {
       @apply block;
@@ -151,12 +149,14 @@
     }
 
     &.not-mainnet {
-      @apply bg-coral;
-      @apply text-black;
+      @apply text-white;
+      @apply fixed;
+      @apply top-4;
 
       .small {
         @apply block;
         @apply text-sm;
+        @apply font-semibold;
       }
     }
 
@@ -280,8 +280,8 @@
     a {
       @apply bg-black;
       @apply text-white font-normal;
-      @apply border border-4 border-white;
-      @apply py-2 px-8;
+      @apply border border-2 border-white;
+      @apply pb-2 pt-[0.8rem] px-8;
       @apply rounded-full;
       @apply uppercase;
       @apply text-button;
@@ -292,6 +292,18 @@
         @apply bg-green-100;
         @apply text-black;
         @apply border-green-100;
+      }
+
+      &:disabled {
+        @apply border-[#707070];
+        @apply text-[#707070];
+
+        &:hover {
+          @apply cursor-not-allowed;
+          @apply border-[#707070];
+          @apply text-[#707070];
+          @apply bg-black;
+        }
       }
     }
   }
