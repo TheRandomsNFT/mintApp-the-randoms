@@ -69,7 +69,7 @@ export default class MintWidget extends React.Component<Props, State> {
                 <img src="/build/images/intro.gif" alt="Collection preview" />
               </div>
               <div className="price">
-                <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Whitelist Sale</> : <>Public Sale</>}</h2>
+                <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Random List Sale</> : <>Public Sale</>}</h2>
                 <div className="controls">
                   <h4>{this.props.totalSupply} / {this.props.maxSupply} @ {utils.formatEther(this.props.tokenPrice)} ETH</h4>
                   <div className="flex flex-col justify-center">
@@ -78,7 +78,7 @@ export default class MintWidget extends React.Component<Props, State> {
                         <span className="mint-amount">{this.state.mintAmount}</span>
                         <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
                       </div>
-                      <span className="mt-4 text-[#36454F] text-sm text-center">Max {this.props.maxMintAmountPerTx} / wallet</span>
+                      <span className="mt-4 text-[#7a7a7a] text-sm text-center">Max {this.props.maxMintAmountPerTx} / wallet</span>
                     </div>
                   </div>
                   <div>
