@@ -69,7 +69,7 @@ export default class MintWidget extends React.Component<Props, State> {
                 <img src="/build/images/intro.gif" alt="Collection preview" />
               </div>
               <div className="price">
-                <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Random List Sale</> : <>Public Sale</>}</h2>
+                <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Presale</> : <>Public Sale</>}</h2>
                 <div className="controls">
                   <h4>{this.props.totalSupply} / {this.props.maxSupply} @ {utils.formatEther(this.props.tokenPrice)} ETH</h4>
                   <div className="flex flex-col justify-center">
