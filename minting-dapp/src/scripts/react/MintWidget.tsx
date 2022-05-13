@@ -66,7 +66,7 @@ export default class MintWidget extends React.Component<Props, State> {
           <div className="mint-widget">
             <div className="flex justify-center">           
               <div className="preview">
-                <img src="/build/images/intro.gif" alt="Collection preview" />
+                <img src="/build/images/intro.gif" alt="Collection preview" className="hidden lg:block"/>
               </div>
               <div className="price">
                 <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Presale</> : <>Public Sale</>}</h2>
@@ -81,15 +81,15 @@ export default class MintWidget extends React.Component<Props, State> {
                       <span className="mt-4 text-[#7a7a7a] text-sm text-center">Max {this.props.maxMintAmountPerTx} / wallet</span>
                     </div>
                   </div>
-                  <div>
+                  <div className="flex justify-center lg:justify-start mt-8 lg:mt-0">
                     <button className="primary" onClick={() => this.mint()}>Mint Now</button>
                   </div>
               </div>
             </div>
           </div>
-          <div className="fixed bottom-0 my-5">
-            <span className="mr-4">* Commercial rights for holders</span>
-            <span className="mr-4">** RC-721A</span>
+          <div className="fixed bottom-0 my-5 flex flex-col lg:flex-row text-center lg:text-left">
+          <span className="mr-4">* ERC-721A</span>
+            <span className="mr-4">** Commercial rights for holders</span>
             <span className="mr-4">*** 50% of royalties reinvested</span>
           </div>
           </>
