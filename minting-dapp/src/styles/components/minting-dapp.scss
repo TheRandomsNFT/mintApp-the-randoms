@@ -1,6 +1,5 @@
 #minting-dapp {
-  @apply hidden;
-  @apply lg:flex;
+  @apply flex;
   @apply flex-col items-center;
   @apply my-6 mx-auto;
   @apply w-full;
@@ -182,15 +181,17 @@
     }
 
     .price {
-      @apply px-6 ml-24;
-      @apply flex flex-col justify-between;
+      @apply px-6 lg:ml-24;
+      @apply flex flex-col justify-center lg:justify-between;
 
       h2 {
-        @apply text-xl uppercase;
+        @apply text-lg lg:text-xl uppercase text-center lg:text-left;
+        @apply mb-8 lg:mb-0;
       }
 
       h4 {
-        @apply text-base uppercase;
+        @apply text-mobile lg:text-base uppercase;
+        @apply mb-8 lg:mb-0;
       }
 
       button {
@@ -232,6 +233,7 @@
 
     .controls {
       @apply flex justify-between items-center;
+      @apply flex-col lg:flex-row;
 
       button {
         @apply py-0 px-2
@@ -265,7 +267,7 @@
     }
   }
   .random-list-check {
-    @apply px-6 ml-24;
+    @apply px-6 lg:ml-24;
     @apply flex flex-col justify-center;
 
     h2 {
@@ -284,7 +286,8 @@
       @apply py-[0.5rem] px-8;
       @apply rounded-full;
       @apply uppercase;
-      @apply text-button;
+      @apply lg:text-button;
+      @apply text-mobile;
       @apply tracking-wider;
       @apply no-underline;
       line-height: 2.6rem;

@@ -74,7 +74,7 @@ span.emoji {
 
 button,
 a {
-  @apply py-1 px-8;
+  @apply py-2 lg:py-2 px-8;
   @apply rounded-full;
   @apply uppercase;
   @apply text-black;
@@ -151,21 +151,22 @@ img {
   height: fit-content;
 }
 
-#mobile-message {
-  @apply flex flex-col justify-center items-center;
-  @apply lg:hidden;
-  @apply text-center;
-  @apply text-base;
+ #mobile-message {
+   @apply hidden;
+//  @apply flex flex-col justify-center items-center;
+//  @apply lg:hidden;
+//  @apply text-center;
+//  @apply text-base;
 
-  h3 {
-    @apply mt-4;
-    @apply uppercase;
-  }
+//  h3 {
+//    @apply mt-4;
+//    @apply uppercase;
+//  }
 
-  img {
-    @apply w-24;
-    @apply mt-4;
-    @apply h-auto;
-    @apply px-2;
-  }
+//  img {
+//    @apply w-24;
+//    @apply mt-4;
+//    @apply h-auto;
+//    @apply px-2;
+//  }
 }
