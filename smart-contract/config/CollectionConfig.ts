@@ -23,7 +23,7 @@ const CollectionConfig: CollectionConfigInterface = {
     price: 0.05,
     maxMintAmountPerTx: 3,
   },
-  contractAddress: "",
+  contractAddress: "0x79Aa05963c92A2a10d96bD840Eb5e73a1E675E92",
   marketplaceIdentifier: 'therandomsnfts',
   marketplaceConfig: openSea,
   whitelistAddresses: whitelistAddresses,
