@@ -104,7 +104,7 @@ export default class MintWidget extends React.Component<Props, State> {
                   <h2>Random List<br></br>Check</h2>
                   <div className="merkle-proof-manual-address">
                     <div>
-                      <a className="validate-wallet" href="https://www.premint.xyz/therandoms/" target="_blank">Validate Your Wallet</a>
+                      <a className="validate-wallet" href="https://www.premint.xyz/the-randoms/" target="_blank">Validate Your Wallet</a>
                     </div>
                   </div>
                 </div>
