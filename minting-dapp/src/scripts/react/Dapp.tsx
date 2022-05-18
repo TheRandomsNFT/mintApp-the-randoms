@@ -65,11 +65,7 @@ export default class Dapp extends React.Component<Props, State> {
     if (browserProvider?.isMetaMask !== true) {
       this.setError(
         <>
-          We were not able to detect <strong>MetaMask</strong>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on the DAPP.<br />
-          <br />
-          But don't worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={this.generateContractUrl()} target="_blank">{this.state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.<br />
-          <br />
-          You can also get your <strong>Whitelist Proof</strong> manually, using the tool below.
+          We were not able to detect <strong>MetaMask</strong>. <br></br> If you are on mobile, please use the browser of your Metamask application.
         </>,
       );
     }
@@ -143,7 +139,7 @@ export default class Dapp extends React.Component<Props, State> {
       <>
         <header className="top-0 fixed w-full my-5 px-4 py-4 lg:py-0 flex items-center justify-center lg:justify-start">
           <img src="/build/images/face.png" className="hidden lg:block float-left w-12" />
-          <button className="fixed lg:right-0 lg:mr-4 flex text-mobile lg:text-button" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>Mint Now<img src="/build/images/metamask.png" className="ml-4 mt-1 hidden lg:block" width="28px" height="28px" /></button>
+          <button className="fixed lg:right-0 lg:mr-4 flex text-mobile lg:text-button" disabled={this.provider === undefined || this.isWalletConnected()} onClick={() => this.connectWallet()}>{this.isWalletConnected() ? <>Wallet Connected</> : <>1. Connect your wallet</>}<img src="/build/images/metamask.png" className="ml-4 mt-1 hidden lg:block" width="28px" height="28px" /></button>
         </header>
 
         {this.isNotMainnet() ?
