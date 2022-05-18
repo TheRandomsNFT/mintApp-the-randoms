@@ -82,7 +82,7 @@ export default class MintWidget extends React.Component<Props, State> {
                     </div>
                   </div>
                   <div className="flex justify-center lg:justify-start mt-8 lg:mt-0">
-                    <button className="primary" onClick={() => this.mint()}>Mint Now</button>
+                    <button className="primary" onClick={() => this.mint()}>2. Mint Now</button>
                   </div>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default class MintWidget extends React.Component<Props, State> {
                     </div>
                   </div>
                   <div className="flex justify-center lg:justify-start mt-8 lg:mt-0">
-                    <button className="primary" onClick={() => this.mint()}>Mint Now</button>
+                    <button className="primary" onClick={() => this.mint()}>2. Mint Now</button>
                   </div>
               </div>
             </div>
