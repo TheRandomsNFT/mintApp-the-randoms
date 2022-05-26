@@ -103,14 +103,14 @@ export default class MintWidget extends React.Component<Props, State> {
               <div className="price">
                 <h2>The Randoms <br></br>{this.props.isWhitelistMintEnabled ? <>Presale</> : <>Public Sale</>}</h2>
                 <div className="controls">
-                  <h4>- - - - / 8888 @ 0.05 ETH</h4>
+                  <h4>- - - - / 8888 @ 0.025 ETH</h4>
                   <div className="flex flex-col justify-center">
                       <div className="h-12 flex flex-row">
                         <button className="decrease" onClick={() => this.decrementMintAmount()}>-</button>
                         <span className="mint-amount">{this.state.mintAmount}</span>
                         <button className="increase" onClick={() => this.incrementMintAmount()}>+</button>
                       </div>
-                      <span className="mt-4 text-[#7a7a7a] text-sm text-center">Max 3 / wallet</span>
+                      <span className="mt-4 text-[#7a7a7a] text-sm text-center">Max 4 / wallet</span>
                     </div>
                   </div>
                   <div className="flex justify-center lg:justify-start mt-8 lg:mt-0">
