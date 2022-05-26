@@ -13,15 +13,15 @@ const CollectionConfig: CollectionConfigInterface = {
   maxSupply: 8888,
   whitelistSale: {
     price: 0.04,
-    maxMintAmountPerTx: 4,
+    maxMintAmountPerTx: 5,
   },
   preSale: {
-    price: 0.00,
-    maxMintAmountPerTx: 100,
+    price: 0.05,
+    maxMintAmountPerTx: 10,
   },
   publicSale: {
-    price: 0.05,
-    maxMintAmountPerTx: 3,
+    price: 0.025,
+    maxMintAmountPerTx: 4,
   },
   contractAddress: "0x79aa05963c92a2a10d96bd840eb5e73a1e675e92",
   marketplaceIdentifier: 'therandomsnfts',
